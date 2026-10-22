@@ -1,6 +1,6 @@
 <svg viewBox="0 0 680 396" width="100%" role="img" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif">
-<title>图 21：漏掉 disposer，旧注册会在新实例旁边继续应答</title>
-<desc>两个对比面板。上面是正确撤销：旧注册框只剩一个虚线空位，标着已释放，事件只送达到唯一的新实例。下面是漏写：旧注册虚线框留在原处，与新实例如并排，事件箭头同时打到两个框，同一事件被处理两次。</desc>
+<title>图 21：漏掉回收，旧登记会在新人旁边继续应答</title>
+<desc>两个对比面板。上面是收得干净：旧登记只剩一个虚线空位，标着已回收，话只送到唯一的新人。下面是漏收：旧登记的虚线框留在原处，与新人并排，话同时打到两个框，同一件事被处理两次。</desc>
 <defs>
   <marker id="ar" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 Z" fill="#5F5E5A"/></marker>
   <marker id="arb" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 Z" fill="#1B3A6B"/></marker>

@@ -19,11 +19,11 @@ from svgkit import (  # noqa: F401
 # ---------------------------------------------------------------- 图 55
 def fig_18_1(out_dir):
     rows = [
-        ("1", "能力按 key 分发", "消费方写的是 key，还是实现", "§04", BLUE),
-        ("2", "依赖声明式", "删掉手写调用，顺序还对不对", "§05", BLUE),
-        ("3", "副作用可撤销", "每个注册能不能追到 disposer", "§07", BLUE),
-        ("4", "真源唯一", "删掉派生数据能不能重建", "§14", BLUE),
-        ("5", "信号绑上下文", "信号的产生路径是不是生产路径", "§17", TEAL),
+        ("1", "能力按名字分发", "消费方写的是名字，还是提供方", "§08", BLUE),
+        ("2", "依赖声明式", "删掉手写顺序，队形还排不排得对", "§06", BLUE),
+        ("3", "注册追得到撤销", "每个注册，都追得到一个回收动作", "§10", BLUE),
+        ("4", "真源唯一", "删掉派生数据，能不能重建", "§11", BLUE),
+        ("5", "信号绑路径", "信号产自彩排队，还是正式队", "§15", TEAL),
     ]
     b = []
     b.extend(banner(40, 12, 608, "总判据：删掉一个插件，系统回到装它之前的样子。", fill=B1))
@@ -36,13 +36,12 @@ def fig_18_1(out_dir):
         b.append(txt(92, y + 22, name, size=12.5, fill=INK, weight=600))
         b.append(txt(300, y + 22, how, size=11, fill=GRAY))
         b.append(tag(576, y + 11, sec, fill=B1 if fill == BLUE else B3, fg=BLUE, w=64))
-    b.append(note(40, 344, "五道检验为本书原创，抽自 §04 / §05 / §07 / §14 / §17 的结论 · 末一道管前四道可不可信"))
+    b.append(note(40, 344, "五道检验各回扣一节：§08 / §06 / §10 / §11 / §15 · 末一道管前四道可不可信"))
     return write(
         out_dir, "fig-18-1-five-checks.svg", 358,
         "图 46：五道检验各查一个侧面",
-        "五道检验排成一列：能力按 key 分发、依赖声明式、副作用可撤销、真源唯一、信号绑上下文。"
-        "每道右边标着它回扣的节号，第五道用青色标出。五道各查一段，没有两道查同一件事；"
-        "末一道管的是前四道可不可信。",
+        "五道检验排成一列：能力按名字分发、依赖声明式、注册追得到撤销、真源唯一、信号绑路径。每道右边标着它回扣的节号，第"
+        "五道用青色标出。五道各查一段，没有两道查同一件事；末一道管的是前四道可不可信。",
         b,
     )
 
@@ -50,11 +49,11 @@ def fig_18_1(out_dir):
 # ---------------------------------------------------------------- 图 56
 def fig_18_2(out_dir):
     checks = [
-        ("检验一", "能力按 key 分发", "过 0 道 · 单体加钩子"),
+        ("检验一", "能力按名字分发", "过 0 道 · 单体加钩子"),
         ("检验二", "依赖声明式", "过 1 道 · 单体加钩子"),
-        ("检验三", "副作用可撤销", "过 2 道 · 能力能换，顺序还要人排"),
+        ("检验三", "注册追得到撤销", "过 2 道 · 能力能换，顺序还要人排"),
         ("检验四", "真源唯一", "过 3 道 · 能干净地卸，状态不唯一"),
-        ("检验五", "信号绑上下文", "过 4 道 · 状态能重建，信号不可信"),
+        ("检验五", "信号绑路径", "过 4 道 · 状态能重建，信号不可信"),
     ]
     b = []
     y0, step, rh = 30, 60, 40
@@ -75,13 +74,12 @@ def fig_18_2(out_dir):
     b.append(rect(40, 328, 300, 40, fill=TEAL, rx=8))
     b.append(txt(190, 348, "过 5 道 · 热插拔成立", size=12.5, fill="#FFFFFF", weight=600, anchor="middle"))
     b.append(txt(372, 348, "删掉一个插件，系统回到装它之前的样子", size=11, fill=TEAL))
-    b.append(note(40, 396, "从顶上那道起逐道向下；前一道是后一道的地基，任何一道不过就卡在那一段 · 本书原创"))
+    b.append(note(40, 396, "从顶上那道起逐道向下；前一道是后一道的地基，任何一道不过就卡在那一段"))
     return write(
         out_dir, "fig-18-2-decision-tree.svg", 410,
         "图 47：五道检验的过关路径",
-        "决策树从顶上「能力按 key 分发」开始，逐道向下。每道一个判断框，不合规就侧向停在一个阶段框，"
-        "阶段框按已过道数标出所处阶段。五道全过，落在「过 5 道 · 热插拔成立」。"
-        "前一道是后一道的地基，任何一道不过就卡在那一段。",
+        "决策树从顶上「能力按名字分发」开始，逐道向下。每道一个判断框，不合规就侧向停在一个阶段框，阶段框按已过道数标出所"
+        "处阶段。五道全过，落在「过 5 道 · 热插拔成立」。前一道是后一道的地基，任何一道不过就卡在那一段。",
         b,
     )
 
@@ -113,7 +111,7 @@ def fig_18_3(out_dir):
         b.append(rect(x0, y, n * unit, rh, fill=fill, stroke=None if fill == BLUE else HAIR, rx=4))
         b.append(txt(x0 + n * unit + 9, y + rh / 2, str(n), size=12, fill=BLUE if fill == BLUE else GRAY, weight=600, mono=True))
     b.extend(banner(40, 286, 608, "过满五道才叫热插拔；少一道，就少一层能力。"))
-    b.append(note(40, 340, "五个阶段名与过关数取自 §18.7 的分层 · 五道检验为本书原创"))
+    b.append(note(40, 340, "五个阶段名随过关数一级级抬升"))
     return write(
         out_dir, "fig-18-3-score-ladder.svg", 354,
         "图 48：过关数与插件化的阶段",
@@ -128,17 +126,17 @@ def fig_18_3(out_dir):
 def fig_19_1(out_dir):
     b = []
     b.append(txt(40, 26, "空间可组合性 · 能声明并响应式管理依赖", size=11, fill=BLUE))
-    b.append(txt(440, 26, "reactive coeffects / inject", size=10.5, fill=TEAL))
+    b.append(txt(440, 26, "响应式余效应 · 报名即依赖", size=10.5, fill=TEAL))
     b.append(line(340, 284, 340, 44, stroke=BLUE, sw=1.2, marker="arb"))
     b.append(line(56, 170, 620, 170, stroke=BLUE, sw=1.2, marker="arb"))
     b.append(circle(340, 170, 3, fill=GRAY))
-    b.append(txt(616, 150, "revertible effects / ctx.effect()", size=10.5, fill=TEAL, anchor="end"))
+    b.append(txt(616, 150, "可逆效应 · 注册都配撤销", size=10.5, fill=TEAL, anchor="end"))
     b.append(txt(616, 186, "时间可组合性 · 组件移除时能完全撤销副作用", size=11, fill=BLUE, anchor="end"))
 
     quads = [
         (84, 76, "依赖能声明，卸不干净", "顺序交给系统，注册没配撤销", PAPER),
-        (356, 76, "Cordis：两维都落地", "可逆效应与响应式余效应同时成立", B1),
-        (356, 194, "卸得干净，顺序写死", "启动脚本里一串手写 init 调用", PAPER),
+        (356, 76, "它：两维都落地", "可逆效应与响应式余效应同时成立", B1),
+        (356, 194, "卸得干净，顺序写死", "启动顺序全靠手写排", PAPER),
         (84, 194, "两样都不成立", "单体加钩子：插件是外挂", PAPER),
     ]
     for x, y, title, sub, fill in quads:
@@ -146,14 +144,13 @@ def fig_19_1(out_dir):
         b.append(txt(x + 14, y + 22, title, size=11.5, fill=INK, weight=600))
         b.append(txt(x + 14, y + 42, sub, size=11, fill=GRAY))
 
-    b.append(note(40, 306, "两根轴互不推导：修好一个不会顺手修好另一个 · 图据 本书对那篇论文的整理"))
+    b.append(note(40, 306, "两根轴互不推导：修好一个，不会顺手修好另一个"))
     return write(
         out_dir, "fig-19-1-two-axes.svg", 320,
         "图 49：可组合性有两个正交维度",
-        "一个二维坐标。横轴是时间可组合性，管装和卸，右端挂可逆效应 revertible effects，"
-        "对应 ctx.effect()；纵轴是空间可组合性，管谁需要谁，上端挂响应式余效应 reactive coeffects，"
-        "对应 inject。Cordis 落在右上象限；另外三个象限分别是卸得干净但顺序写死、依赖能声明但卸不干净、"
-        "两样都不成立。两根轴互不推导。",
+        "一个二维坐标。横轴是时间可组合性，管装和卸，右端挂可逆效应，对应每个注册都配撤销；纵轴是空间可组合性，管谁需要谁"
+        "，上端挂响应式余效应，对应报名即依赖。这套系统落在右上象限；另外三个象限分别是卸得干净但顺序写死、依赖能声明但卸"
+        "不干净、两样都不成立。两根轴互不推导。",
         b,
     )
 
@@ -161,14 +158,14 @@ def fig_19_1(out_dir):
 # ---------------------------------------------------------------- 图 59
 def fig_19_3(out_dir):
     rows = [
-        ("ctx.effect() 返回 disposer", "revertible effect（时间可组合性）"),
-        ("inject 声明依赖，就绪才启动", "reactive coeffect（空间可组合性）"),
-        ("ctx.<key> 服务容器", "统一的 effect / coeffect context"),
+        ("每个注册都返回一个回收动作", "可逆效应（时间可组合性）"),
+        ("报名即依赖，齐了才启动", "响应式余效应（空间可组合性）"),
+        ("按名字取服务的容器", "效应与余效应的统一语境"),
         ("插件卸载时撤销注册", "时间可组合性的运行时兑现"),
-        ("HMR 热模块替换", "时空可组合性的可观测后果"),
+        ("热替换", "时空可组合性的可观测后果"),
     ]
     b = []
-    b.append(txt(40, 24, "Cordis 工程实践", size=11.5, fill=BLUE, weight=600))
+    b.append(txt(40, 24, "这套系统的做法", size=11.5, fill=BLUE, weight=600))
     b.append(txt(352, 24, "论文的形式定义", size=11.5, fill=TEAL, weight=600))
     y0, step, rh = 44, 52, 46
     for i, (left, right) in enumerate(rows):
@@ -180,16 +177,14 @@ def fig_19_3(out_dir):
         b.append(line(332, y + rh / 2, 348, y + rh / 2, stroke=GRAY, sw=1.2, marker="ar"))
         b.append(line(348, y + rh / 2, 332, y + rh / 2, stroke=GRAY, sw=1.2, marker="ar"))
     b.extend(banner(40, 312, 608, "左边是能跑的代码，右边是形式定义，说的是同一件事，不是比喻。"))
-    b.append(note(40, 366, "论文 arXiv:2608.25512 · 92 页 · 2026-08-26 · cs.PL / cs.SE"))
-    b.append(note(40, 386, "标题《A Programming Paradigm for Spatiotemporal Composability》"))
-    b.append(note(40, 406, "本书未精读论文正文：映射为本书据二手整理所做，非论文原表呈现。"))
+    b.append(note(40, 386, "那篇论文的题目，译过来是《时空可组合性的编程范式》"))
+    b.append(note(40, 406, "左列是本书的读法，不是论文里的原表"))
     return write(
         out_dir, "fig-19-3-mapping.svg", 420,
         "图 50：同一件事的两种写法",
-        "一张五行对照表。左列是 Cordis 的工程实践，右列是论文的形式定义，每行一条双向箭头。"
-        "ctx.effect() 返回 disposer 对应 revertible effect；inject 声明依赖、就绪才启动对应 reactive coeffect；"
-        "ctx.<key> 服务容器对应统一的 effect / coeffect context；插件卸载时撤销注册是时间可组合性的运行时兑现；"
-        "HMR 热模块替换是时空可组合性的可观测后果。左边是能跑的代码，右边是形式定义，不是比喻。",
+        "一张五行对照表。左列是这套系统的做法，右列是论文的形式定义，每行一条双向箭头。每个注册都返回一个回收动作对应可逆"
+        "效应；报名即依赖、齐了才启动对应响应式余效应；按名字取服务的容器对应效应与余效应的统一语境；卸载时撤销注册是时间"
+        "可组合性的运行时兑现；热替换是时空可组合性的可观测后果。左边是能跑的代码，右边是形式定义，不是比喻。",
         b,
     )
 
@@ -199,12 +194,12 @@ def fig_20_1(out_dir):
     b = []
     b.append(rect(225, 26, 230, 52, fill=BLUE, rx=8))
     b.append(txt(243, 45, "① 服务容器", size=12.5, fill="#FFFFFF", weight=600))
-    b.append(txt(243, 65, "能力按 key 分发 · §04", size=10.5, fill=ONB))
+    b.append(txt(243, 65, "能力按名字分发 · §08", size=10.5, fill=ONB))
 
     branches = [
-        (40, "② inject 声明", "系统推出加载顺序 · §05"),
-        (245, "③ effect 与 disposer", "每个注册配一个撤销 · §07"),
-        (450, "④ 单一真源", "只存事件，状态当投影 · §14"),
+        (40, "② 报名即依赖", "顺序系统自己推 · §06"),
+        (245, "③ 注册配回收", "每个注册都带一个撤销 · §10"),
+        (450, "④ 单一真源", "只存底稿，别处都是抄件 · §11"),
     ]
     for x, title, sub in branches:
         b.append(rect(x, 110, 190, 58, fill=B1, stroke=HAIR))
@@ -217,7 +212,7 @@ def fig_20_1(out_dir):
 
     b.append(rect(40, 200, 190, 50, fill=PAPER, stroke=LINE))
     b.append(txt(54, 219, "三层叠加", size=11.5, fill=INK, weight=600))
-    b.append(txt(54, 238, "按 id 整体替换 · §09", size=10.5, fill=GRAY))
+    b.append(txt(54, 238, "整块替换，不逐字段合并 · §06", size=10.5, fill=GRAY))
     b.append(rect(245, 200, 190, 50, fill=PAPER, stroke=LINE))
     b.append(txt(259, 219, "热替换", size=11.5, fill=INK, weight=600))
     b.append(txt(259, 238, "卸掉旧注册后换实现", size=10.5, fill=GRAY))
@@ -225,7 +220,7 @@ def fig_20_1(out_dir):
     b.append(path("M340,168 V194", stroke=BLUE, sw=1.3, marker="arb"))
 
     b.append(rect(40, 286, 608, 52, fill=B1, stroke=HAIR))
-    b.append(txt(58, 306, "⑤ 让测试走生产那条装配路径 · §17", size=12, fill=INK, weight=600))
+    b.append(txt(58, 306, "⑤ 让测试走正式那条装配路径 · §15", size=12, fill=INK, weight=600))
     b.append(txt(58, 328, "排在末尾不是因为最难，是因为它管前四步可不可信", size=11, fill=GRAY))
     b.append(path("M135,286 V256", stroke=GRAY, sw=1.2, dash="4 3", marker="ar"))
     b.append(path("M340,286 V256", stroke=GRAY, sw=1.2, dash="4 3", marker="ar"))
@@ -233,13 +228,13 @@ def fig_20_1(out_dir):
     b.append(txt(352, 276, "虚线 = 让前面各步可验", size=10.5, fill=GRAY))
 
     b.append(note(40, 366, "五步顺序由依赖推出，不能乱序；第二步与第三步可并行，但都建在第一步之上。"))
-    b.append(note(40, 386, "本书原创 · 回扣 §04 / §05 / §07 / §09 / §14 / §17"))
+    b.append(note(40, 386, "回扣 §08 / §06 / §10 / §11 / §15"))
     return write(
         out_dir, "fig-20-1-migration-order.svg", 400,
         "图 51：迁移步骤的依赖顺序",
-        "起点是①服务容器，能力按 key 分发。它带出三条分支：②inject 声明、③effect 与 disposer、"
-        "④单一真源。②之后才谈得上三层叠加与按 id 整体替换，③之后才谈得上热替换。"
-        "末尾是⑤让测试走生产那条装配路径，用虚线指向前面各框。末尾那步不产出新能力，只让前面的成果可信。",
+        "起点是服务容器，能力按名字分发。它带出三条分支：报名即依赖、注册配回收、单一真源。第一条之后才谈得上三层叠加与整"
+        "块替换，第二条之后才谈得上热替换。末尾是让测试走正式那条装配路径，用虚线指向前面各框。末尾那步不产出新能力，只让"
+        "前面的成果可信。",
         b,
     )
 

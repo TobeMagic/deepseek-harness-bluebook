@@ -1,6 +1,6 @@
 <svg viewBox="0 0 680 354" width="100%" role="img" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif">
 <title>图 35：派生的代价与两层缓存</title>
-<desc>中间一条「事件流」横线。上方挂 deriveMessages() 的 surface 缓存，管「这一步会话看到什么」；下方挂 ctx.sessionProjections 的单元缓存，管「某个域现在是什么值」。两条缓存都用虚线回指事件流，表示都由事件驱动。核心反差：派生的代价靠两层缓存压住，但两层都不落成第二份真源，删掉重算都对。</desc>
+<desc>中间一条「事件流」横线。上方挂一层缓存，管「这一步屋里的人看到什么」；下方挂一层缓存，管「某个角落现在是什么值」。两条缓存都用虚线回指事件流，表示都由底稿驱动。核心反差：派生的代价靠两层缓存压住，但两层都不落成第二份真源，删掉重算都对。</desc>
 <defs>
   <marker id="ar" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 Z" fill="#5F5E5A"/></marker>
   <marker id="arb" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 Z" fill="#1B3A6B"/></marker>

@@ -305,10 +305,10 @@ def fig_3_1(out_dir):
 # ---------------------------------------------------------------- 图 7
 def fig_3_2(out_dir):
     stack = [
-        ("1", "bundle", "官方预打包的零件", B1, INK, GRAY),
-        ("2", "profile 补丁", "某个 profile 自己的修改", B2, INK, GRAY),
-        ("3", "home 补丁", "用户机器上的全局修改", B3, INK, "#3A4A63"),
-        ("4", "--patch", "本次启动临时塞进去的", BLUE, "#FFFFFF", ONB),
+        ("1", "零件包", "默认给什么", B1, INK, GRAY),
+        ("2", "名单补丁", "这个形态自己改什么", B2, INK, GRAY),
+        ("3", "本机补丁", "用户机器上改", B3, INK, "#3A4A63"),
+        ("4", "临时补丁", "本次启动临时塞进去的", BLUE, "#FFFFFF", ONB),
     ]
     b = []
     y0, ch, step = 18, 40, 66
@@ -317,7 +317,7 @@ def fig_3_2(out_dir):
         b.append(rect(92, y, 380, ch, fill=fill, stroke=HAIR if fill != BLUE else None))
         b.append(f'<circle cx="64" cy="{y + 20}" r="13" fill="{CREAM}" stroke="{HAIR}"/>')
         b.append(txt(64, y + 20, idx, size=11, fill=GRAY, anchor="middle"))
-        b.append(txt(108, y + 20, name, size=12.5, fill=fg, weight=600, mono=(i == 3)))
+        b.append(txt(108, y + 20, name, size=12.5, fill=fg, weight=600, mono=False))
         b.append(txt(456, y + 20, desc, size=11, fill=sub, anchor="end"))
         if i < 3:
             b.append(path(f"M282,{y + 42} V{y + step - 2}", stroke=BLUE, sw=1.4, marker="arb"))
@@ -325,12 +325,12 @@ def fig_3_2(out_dir):
     b.append(rect(492, last_y + 8, 76, 24, fill=TEAL, rx=12))
     b.append(txt(530, last_y + 20, "最终生效", size=11, fill="#FFFFFF", anchor="middle"))
     b.append(path("M472,236 H488", stroke=LINE, sw=1.2))
-    b.append(note(92, 282, "箭头 = 覆盖方向：后者整体替换前者，不做合并 · 简化自 architecture.zh.md §Profile 与组合包"))
+    b.append(note(92, 282, "箭头 = 覆盖方向：后者整体替换前者，不做合并"))
     return write(
         out_dir, "fig-3-2-config-overlay.svg", 296,
         "图 10：启动时配置的叠加顺序",
-        "四层配置自上而下依次叠加：bundle（官方预打包）、profile 补丁、home 补丁（用户全局）、--patch（本次启动临时）。"
-        "每下一层整体覆盖上一层，最后 --patch 生效，全程不做合并。",
+        "四层配置自上而下依次叠加：零件包给默认值，名单补丁改这个形态自己的部分，本机补丁改用户机器上的，临时补丁只管本次"
+        "启动。每下一层整体覆盖上一层，最后临时补丁生效，全程不做合并。",
         b,
     )
 
@@ -357,8 +357,7 @@ def fig_3_3(out_dir):
     return write(
         out_dir, "fig-3-3-host-entry.svg", 226,
         "图 11：宿主层是所有客户端的入口",
-        "浏览器、桌面 App、CLI、编辑器四种客户端都连到宿主层（client / api / host / sdk，87 个包，约 40% 代码），"
-        "宿主层再接到内核层（session / llm / core / context）。",
+        "浏览器、桌面、命令行、编辑器四种客户端都连到门房（宿主层），门房再接到总部（内核层）。门房只接待传话，不拿主意。",
         b,
     )
 
@@ -405,8 +404,8 @@ def fig_3_4(out_dir):
     return write(
         out_dir, "fig-3-4-core-four.svg", 350,
         "图 12：内核四件套的依赖关系",
-        "agent 依赖 llm、tools 和 session；tools 也依赖 session。四个节点标注被依赖包数："
-        "session 101、llm 94、agent 76、tools 55。session 位于最底部，被所有组件依赖。",
+        "四件套互相依赖：领班的靠师傅、工具和记笔记的；工具也靠记笔记的。记笔记的那件位于最底部，谁都用得着。谁是真内核，"
+        "看的是被依赖的方向，不是代码量。",
         b,
     )
 

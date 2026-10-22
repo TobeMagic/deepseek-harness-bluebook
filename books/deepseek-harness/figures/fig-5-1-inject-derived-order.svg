@@ -1,6 +1,6 @@
 <svg viewBox="0 0 680 358" width="100%" role="img" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif">
 <title>图 17：顺序由声明推出来</title>
-<desc>左边一列是配置文件里的书写顺序，右边一列是实际加载顺序，两列序号对不上。右边那列由 inject 的边推出来，提供方排在消费方前面。核心反差：写文件的顺序不算数，声明才算数。</desc>
+<desc>左边一列是配置文件里的书写顺序，右边一列是实际加载顺序，两列序号对不上。右边那列由「我需要谁」的边推出来，提供方排在消费方前面。核心反差：写文件的顺序不算数，声明才算数。</desc>
 <defs>
   <marker id="ar" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 Z" fill="#5F5E5A"/></marker>
   <marker id="arb" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 Z" fill="#1B3A6B"/></marker>

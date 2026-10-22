@@ -22,7 +22,7 @@ DeepSeek Harness is taken apart and rebuilt in plain language, using one running
 | Format | File | Notes |
 |------|------|------|
 | **HTML (single file, recommended)** | [deepseek-harness-bluebook.html](books/deepseek-harness/deepseek-harness-bluebook.html) | Cover, 6 part frontispieces, TOC, all chapters; 42 diagrams inlined; works offline |
-| **PDF** | [deepseek-harness-bluebook.pdf](books/deepseek-harness/deepseek-harness-bluebook.pdf) | 111 pages, WYSIWYG, good for printing and sharing |
+| **PDF** | [deepseek-harness-bluebook.pdf](books/deepseek-harness/deepseek-harness-bluebook.pdf) | 113 pages, WYSIWYG, good for printing and sharing |
 | **EPUB** | [deepseek-harness-bluebook.epub](books/deepseek-harness/deepseek-harness-bluebook.epub) | 21 chapters with a navigation TOC; diagrams rasterized; works in Kindle / Apple Books |
 | Source | [fragments/](books/deepseek-harness/fragments) | Chapter sources in Markdown; rebuild with `tools/build_book.py` |
 

@@ -20,7 +20,7 @@
 | 格式 | 文件 | 说明 |
 |------|------|------|
 | **HTML（单文件，推荐）** | [deepseek-harness-bluebook.html](books/deepseek-harness/deepseek-harness-bluebook.html) | 封面 + 6 部题图 + 目录 + 全部章节，42 张图全内联，双击即看，离线可用 |
-| **PDF** | [deepseek-harness-bluebook.pdf](books/deepseek-harness/deepseek-harness-bluebook.pdf) | 111 页，版式即所见，适合打印与分享 |
+| **PDF** | [deepseek-harness-bluebook.pdf](books/deepseek-harness/deepseek-harness-bluebook.pdf) | 113 页，版式即所见，适合打印与分享 |
 | **EPUB** | [deepseek-harness-bluebook.epub](books/deepseek-harness/deepseek-harness-bluebook.epub) | 21 章带导航目录，图已转位图，Kindle / Apple Books / 微信读书可读 |
 | 源稿 | [fragments/](books/deepseek-harness/fragments) | 各章节 Markdown，改完跑 `tools/build_book.py` 重新成书 |
 

@@ -1,6 +1,6 @@
 <svg viewBox="0 0 680 1072" width="100%" role="img" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif">
-<title>图 29：从 followup 到工具结果，一次轮次的完整时序</title>
-<desc>竖向时序图，七条生命线自左向右：用户/SDK、Session、Driver、hooks、ctx.systemPrompt、ctx.llm、ctx.tools，时间自上而下。followup 进来后 Driver 开轮次（turn/start），组装提示词、跑 agent/pre-step；被拒或首批为空则空轮次结束，接纳则开步骤（step/start），协调请求、llm/stream 流式返回，模型成功后进工具循环（tool/call → 有序 pre、并发 execute → tool/result），最后 step/end、turn/end、agent/status idle。左侧括号标出 alt / else / loop / opt 分支。</desc>
+<title>图 29：一次轮次的完整时序</title>
+<desc>竖向时序图，七条生命线自左向右：业主、记笔记的、领班的、公告栏、拼开场白的、师傅、拧螺丝的，时间自上而下。业主一句话进门，领班开轮次、拼开场白、过公告栏；被拒或首批为空则空轮次结束，接纳则起一步，把问题递到师傅手里，师傅逐字回话；这一答没成就原话重问或认下这次错；之后排活、过五道手、能同时干的同时动手，结果直接落笔记；收尾前再过一道手，交活。左侧括号标出二选一、重复、可选分支。</desc>
 <defs>
   <marker id="ar" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 Z" fill="#5F5E5A"/></marker>
   <marker id="arb" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 Z" fill="#1B3A6B"/></marker>
@@ -117,31 +117,30 @@
 <path d="M46,305 L46,925" fill="none" stroke="#1B3A6B" stroke-width="1.3"/>
 <path d="M46,305 L55,305" fill="none" stroke="#1B3A6B" stroke-width="1.3"/>
 <path d="M46,925 L55,925" fill="none" stroke="#1B3A6B" stroke-width="1.3"/>
-<rect x="56" y="294" width="174.025" height="16" rx="8" fill="#EDF2F9"/>
-<text x="143.0125" y="302" font-size="10.5" font-weight="400" fill="#2C2C2A" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">alt  被拦 / 没活 / 起步前没过</text>
+<rect x="56" y="294" width="193.97500000000002" height="16" rx="8" fill="#EDF2F9"/>
+<text x="152.9875" y="302" font-size="10.5" font-weight="400" fill="#2C2C2A" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">二选一 · 被拦 / 没活 / 起步前没过</text>
 <path d="M46,351 L55,351" fill="none" stroke="#1B3A6B" stroke-width="1.3"/>
-<rect x="56" y="340" width="71.65" height="16" rx="8" fill="#F5F0E8"/>
-<text x="91.825" y="348" font-size="10.5" font-weight="400" fill="#2C2C2A" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">else  放行</text>
+<rect x="56" y="340" width="75.32499999999999" height="16" rx="8" fill="#F5F0E8"/>
+<text x="93.6625" y="348" font-size="10.5" font-weight="400" fill="#2C2C2A" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">否则 · 放行</text>
 <path d="M58,586 L58,850" fill="none" stroke="#1B3A6B" stroke-width="1.3"/>
 <path d="M58,586 L67,586" fill="none" stroke="#1B3A6B" stroke-width="1.3"/>
 <path d="M58,850 L67,850" fill="none" stroke="#1B3A6B" stroke-width="1.3"/>
-<rect x="68" y="575" width="97.375" height="16" rx="8" fill="#EDF2F9"/>
-<text x="116.6875" y="583" font-size="10.5" font-weight="400" fill="#2C2C2A" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">alt  这一答没成</text>
+<rect x="68" y="575" width="117.32499999999999" height="16" rx="8" fill="#EDF2F9"/>
+<text x="126.6625" y="583" font-size="10.5" font-weight="400" fill="#2C2C2A" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">二选一 · 这一答没成</text>
 <path d="M58,686 L67,686" fill="none" stroke="#1B3A6B" stroke-width="1.3"/>
-<rect x="68" y="675" width="103.15" height="16" rx="8" fill="#F5F0E8"/>
-<text x="119.575" y="683" font-size="10.5" font-weight="400" fill="#2C2C2A" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">else  师傅答成了</text>
+<rect x="68" y="675" width="106.82499999999999" height="16" rx="8" fill="#F5F0E8"/>
+<text x="121.4125" y="683" font-size="10.5" font-weight="400" fill="#2C2C2A" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">否则 · 师傅答成了</text>
 <path d="M70,759 L70,848" fill="none" stroke="#1B3A6B" stroke-width="1.3"/>
 <path d="M70,759 L79,759" fill="none" stroke="#1B3A6B" stroke-width="1.3"/>
 <path d="M70,848 L79,848" fill="none" stroke="#1B3A6B" stroke-width="1.3"/>
-<rect x="80" y="748" width="187.15" height="16" rx="8" fill="#EDF2F9"/>
-<text x="173.575" y="756" font-size="10.5" font-weight="400" fill="#2C2C2A" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">loop  收齐结果再往下，一批有上限</text>
+<rect x="80" y="748" width="190.825" height="16" rx="8" fill="#EDF2F9"/>
+<text x="175.4125" y="756" font-size="10.5" font-weight="400" fill="#2C2C2A" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">重复 · 收齐结果再往下，一批有上限</text>
 <path d="M58,886 L58,925" fill="none" stroke="#1B3A6B" stroke-width="1.3"/>
 <path d="M58,886 L67,886" fill="none" stroke="#1B3A6B" stroke-width="1.3"/>
 <path d="M58,925 L67,925" fill="none" stroke="#1B3A6B" stroke-width="1.3"/>
-<rect x="68" y="875" width="170.875" height="16" rx="8" fill="#EDF2F9"/>
-<text x="153.4375" y="883" font-size="10.5" font-weight="400" fill="#2C2C2A" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">opt  师傅说完了，也没新话进门</text>
+<rect x="68" y="875" width="180.325" height="16" rx="8" fill="#EDF2F9"/>
+<text x="158.1625" y="883" font-size="10.5" font-weight="400" fill="#2C2C2A" text-anchor="middle" dominant-baseline="central" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">可选 · 师傅说完了，也没新话进门</text>
 <rect x="40" y="990" width="608" height="30" rx="6" fill="#F5F0E8" stroke="#D8D6CD" stroke-width="1.0"/>
 <text x="58" y="1005.0" font-size="11.5" font-weight="400" fill="#2C2C2A" text-anchor="start" dominant-baseline="central">除了拧螺丝的交回的结果直接落笔记，其余每句话都经领班的转一手。</text>
-<text x="40" y="1038" font-size="10.5" font-weight="400" fill="#5F5E5A" text-anchor="start" dominant-baseline="central">灰实线＝派活，蓝虚线＝回话；左侧括号标分支（alt / loop / opt）</text>
-<text x="40" y="1058" font-size="10.5" font-weight="400" fill="#5F5E5A" text-anchor="start" dominant-baseline="central">简化自 官方生命周期文档</text>
+<text x="40" y="1038" font-size="10.5" font-weight="400" fill="#5F5E5A" text-anchor="start" dominant-baseline="central">灰实线＝派活，蓝虚线＝回话；左侧括号标分支：二选一、重复、可选</text>
 </svg>

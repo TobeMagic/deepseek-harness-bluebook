@@ -22,42 +22,41 @@ def fig_4_1(out_dir):
     # 左右两个插件框，中间是 ctx 的 key 框
     b.append(rect(40, 70, 172, 64, fill=B1, stroke=LINE, rx=8))
     b.append(txt(126, 92, "消费方插件", size=12.5, fill=INK, weight=600, anchor="middle"))
-    b.append(txt(126, 112, "只写字符串 tools", size=11, fill=GRAY, anchor="middle"))
+    b.append(txt(126, 112, "只写一个岗位名", size=11, fill=GRAY, anchor="middle"))
 
     b.append(rect(254, 60, 172, 84, fill=BLUE, rx=8))
-    b.append(txt(340, 88, "ctx.tools", size=14, fill="#FFFFFF", weight=600, anchor="middle", mono=True))
-    b.append(txt(340, 110, "一个固定的 key", size=11, fill=ONB, anchor="middle"))
+    b.append(txt(340, 88, "岗位名", size=14, fill="#FFFFFF", weight=600, anchor="middle"))
+    b.append(txt(340, 110, "全公司只此一个", size=11, fill=ONB, anchor="middle"))
 
     b.append(rect(468, 70, 172, 64, fill=B1, stroke=LINE, rx=8))
     b.append(txt(554, 92, "提供方插件", size=12.5, fill=INK, weight=600, anchor="middle"))
-    b.append(txt(554, 112, "供 tools", size=11, fill=GRAY, anchor="middle"))
+    b.append(txt(554, 112, "供这个岗位", size=11, fill=GRAY, anchor="middle"))
 
     # 两条边都被中间截断
     b.append(path("M216,102 H250", stroke=BLUE, sw=1.4, marker="arb"))
     b.append(path("M468,102 H432", stroke=BLUE, sw=1.4, marker="arb"))
-    b.append(txt(233, 84, "查 key", size=11, fill=GRAY, anchor="middle"))
-    b.append(txt(451, 84, "供 key", size=11, fill=GRAY, anchor="middle"))
+    b.append(txt(233, 84, "报名", size=11, fill=GRAY, anchor="middle"))
+    b.append(txt(451, 84, "挂名", size=11, fill=GRAY, anchor="middle"))
     b.append(txt(340, 158, "两条边都被中间截断；两边之间没有连线", size=11, fill=GRAY, anchor="middle"))
 
     # 对比：import 的写法，两个包直连
     b.append(rect(40, 178, 608, 76, fill=PAPER, stroke=HAIR, rx=8))
-    b.append(txt(56, 200, "对比 import 的写法", size=11.5, fill=TEAL, weight=600))
-    b.append(txt(56, 226, "两个包直连，换一个要动另一个", size=11, fill=GRAY))
+    b.append(txt(56, 200, "对比直接点名找小张", size=11.5, fill=TEAL, weight=600))
+    b.append(txt(56, 226, "两边直接认识，换一个要动另一个", size=11, fill=GRAY))
     b.append(rect(300, 190, 96, 40, fill=B3, rx=6))
-    b.append(txt(348, 210, "包 A", size=11.5, fill=INK, weight=600, anchor="middle"))
+    b.append(txt(348, 210, "买家", size=11.5, fill=INK, weight=600, anchor="middle"))
     b.append(path("M400,210 H440", stroke=GRAY, sw=1.4, marker="ar"))
     b.append(txt(420, 198, "直连", size=11, fill=GRAY, anchor="middle"))
     b.append(rect(444, 190, 96, 40, fill=B3, rx=6))
-    b.append(txt(492, 210, "包 B", size=11.5, fill=INK, weight=600, anchor="middle"))
+    b.append(txt(492, 210, "小张", size=11.5, fill=INK, weight=600, anchor="middle"))
 
-    b.extend(banner(40, 268, 608, "消费方查 key，提供方供 key；两边互不认识，换提供方不动消费方。"))
-    b.append(note(40, 316, "两条边都止于中间的 key 框，两边之间没有直连的边 · 对比 import 的写法"))
+    b.extend(banner(40, 268, 608, "消费方报名，提供方挂名；两边互不认识，换提供方不动消费方。"))
+    b.append(note(40, 316, "两条边都止于中间的岗位名，两边之间没有直连的边 · 对比直接点名找小张"))
     return write(
         out_dir, "fig-4-1-key-lookup.svg", 330,
-        "图 15：消费方查 key，提供方供 key",
-        "左边是消费方插件，右边是提供方插件，中间是 ctx.tools 这个固定的 key。两边各一条箭头指向中间，"
-        "左标查 key、右标供 key，两条边都被中间截断，两边之间没有连线。下方画出 import 的写法作对比："
-        "两个包直接相连，换一个要动另一个。",
+        "图 15：消费方报名，提供方挂名",
+        "左边是消费方插件，右边是提供方插件，中间是一个固定的岗位名。两边各一条箭头指向中间，左标报名、右标挂名，两条边都"
+        "被中间截断，两边之间没有连线。下方画出直接点名找小张的写法作对比：两边直接认识，换一个要动另一个。",
         b,
     )
 
@@ -98,10 +97,9 @@ def fig_4_2(out_dir):
     b.append(note(40, 388, "消费方从头到尾没动过：它做的事，一直只是报出一个名字"))
     return write(
         out_dir, "fig-4-2-swap-backend.svg", 402,
-        "图 16：换掉循环，只有装配清单要动",
-        "上半是一个消费方，注入 shell，下面并排两个可互换的后端；换后端只改装配清单那一行。"
-        "下半是装配清单指向 agent-loop，316 个包的依赖图里只有 3 条边指向 agent-loop，两条来自装配包。"
-        "换后端与换循环，改动都落在装配清单这一格。",
+        "图 16：换掉循环，只有排班表要动",
+        "上半是一个消费方，报名要一个会拧螺丝的，下面并排两个可互换的后端；换后端只改排班表上的一行。下半是排班表指向领班"
+        "的那一格。换后端与换循环，改动都落在排班表这一格。",
         b,
     )
 
@@ -140,8 +138,8 @@ def fig_5_1(out_dir):
     return write(
         out_dir, "fig-5-1-inject-derived-order.svg", 358,
         "图 17：顺序由声明推出来",
-        "左边一列是配置文件里的书写顺序，右边一列是实际加载顺序，两列序号对不上。右边那列由 inject 的边"
-        "推出来，提供方排在消费方前面。核心反差：写文件的顺序不算数，声明才算数。",
+        "左边一列是配置文件里的书写顺序，右边一列是实际加载顺序，两列序号对不上。右边那列由「我需要谁」的边推出来，提供方"
+        "排在消费方前面。核心反差：写文件的顺序不算数，声明才算数。",
         b,
     )
 
@@ -178,10 +176,9 @@ def fig_5_3(out_dir):
     b.append(note(40, 376, "安装关系答「装不装得上」，事件往来答「人在不在」；设备在、岗上可缺席（名册上划掉）"))
     return write(
         out_dir, "fig-5-3-two-graphs.svg", 390,
-        "图 18：同一批包上的两张图",
-        "同一批包上叠两张图。上面是 package.json 的模块图，边连向一个包；下面是 inject 的服务图，边连向"
-        "一个字符串 key。下图里那个 key 旁还挂着一个虚线框 disabled: true，说明包在、服务可以不在。"
-        "核心反差：两张图看着像一张，其实不是。",
+        "图 18：同一批插件上的两张图",
+        "同一批插件上叠两张图。上面是安装关系图，边连向一个插件；下面是干活关系图，边连向一个岗位名。下图里那个岗位名旁还"
+        "挂着一个虚线框，表示插件在、岗位可以空着。核心反差：两张图看着像一张，其实不是。",
         b,
     )
 
@@ -270,8 +267,8 @@ def fig_7_1(out_dir):
     return write(
         out_dir, "fig-7-1-load-unload-symmetry.svg", 364,
         "图 20：加载期和卸载期共用一份代码",
-        "左栏是加载期，写注册动作；右栏是卸载期，写释放动作；中间一条 effect 竖条连接两栏，左右用虚线"
-        "一一配对。核心反差：注册和撤销不是两份工作，是同一份 effect 的两个时刻。",
+        "左栏是上岗时，写登记动作；右栏是离岗时，写回收动作；中间一条带子连起两栏，左右用虚线一一配对。核心反差：登记和回"
+        "收不是两份工作，是同一件事的两个时刻。",
         b,
     )
 
@@ -310,9 +307,9 @@ def fig_7_2(out_dir):
     b.append(note(40, 382, "热替换先拆下再装上；漏撤的旧听差留在公告栏上 · 官方组合与热替换教程"))
     return write(
         out_dir, "fig-7-2-ghost-state.svg", 396,
-        "图 21：漏掉 disposer，旧注册会在新实例旁边继续应答",
-        "两个对比面板。上面是正确撤销：旧注册框只剩一个虚线空位，标着已释放，事件只送达到唯一的新实例。"
-        "下面是漏写：旧注册虚线框留在原处，与新实例如并排，事件箭头同时打到两个框，同一事件被处理两次。",
+        "图 21：漏掉回收，旧登记会在新人旁边继续应答",
+        "两个对比面板。上面是收得干净：旧登记只剩一个虚线空位，标着已回收，话只送到唯一的新人。下面是漏收：旧登记的虚线框"
+        "留在原处，与新人并排，话同时打到两个框，同一件事被处理两次。",
         b,
     )
 

@@ -1,6 +1,6 @@
 <svg viewBox="0 0 680 226" width="100%" role="img" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif">
 <title>图 11：宿主层是所有客户端的入口</title>
-<desc>浏览器、桌面 App、CLI、编辑器四种客户端都连到宿主层（client / api / host / sdk，87 个包，约 40% 代码），宿主层再接到内核层（session / llm / core / context）。</desc>
+<desc>浏览器、桌面、命令行、编辑器四种客户端都连到门房（宿主层），门房再接到总部（内核层）。门房只接待传话，不拿主意。</desc>
 <defs>
   <marker id="ar" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 Z" fill="#5F5E5A"/></marker>
   <marker id="arb" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 Z" fill="#1B3A6B"/></marker>

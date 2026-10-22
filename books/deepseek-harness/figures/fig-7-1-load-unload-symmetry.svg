@@ -1,6 +1,6 @@
 <svg viewBox="0 0 680 364" width="100%" role="img" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif">
 <title>图 20：加载期和卸载期共用一份代码</title>
-<desc>左栏是加载期，写注册动作；右栏是卸载期，写释放动作；中间一条 effect 竖条连接两栏，左右用虚线一一配对。核心反差：注册和撤销不是两份工作，是同一份 effect 的两个时刻。</desc>
+<desc>左栏是上岗时，写登记动作；右栏是离岗时，写回收动作；中间一条带子连起两栏，左右用虚线一一配对。核心反差：登记和回收不是两份工作，是同一件事的两个时刻。</desc>
 <defs>
   <marker id="ar" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 Z" fill="#5F5E5A"/></marker>
   <marker id="arb" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 Z" fill="#1B3A6B"/></marker>

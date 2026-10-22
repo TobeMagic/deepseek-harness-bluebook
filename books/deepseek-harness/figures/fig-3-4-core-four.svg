@@ -1,6 +1,6 @@
 <svg viewBox="0 0 680 350" width="100%" role="img" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif">
 <title>图 12：内核四件套的依赖关系</title>
-<desc>agent 依赖 llm、tools 和 session；tools 也依赖 session。四个节点标注被依赖包数：session 101、llm 94、agent 76、tools 55。session 位于最底部，被所有组件依赖。</desc>
+<desc>四件套互相依赖：领班的靠师傅、工具和记笔记的；工具也靠记笔记的。记笔记的那件位于最底部，谁都用得着。谁是真内核，看的是被依赖的方向，不是代码量。</desc>
 <defs>
   <marker id="ar" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 Z" fill="#5F5E5A"/></marker>
   <marker id="arb" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 Z" fill="#1B3A6B"/></marker>

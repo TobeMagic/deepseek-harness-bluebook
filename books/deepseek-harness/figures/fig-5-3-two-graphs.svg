@@ -1,6 +1,6 @@
 <svg viewBox="0 0 680 390" width="100%" role="img" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif">
-<title>图 18：同一批包上的两张图</title>
-<desc>同一批包上叠两张图。上面是 package.json 的模块图，边连向一个包；下面是 inject 的服务图，边连向一个字符串 key。下图里那个 key 旁还挂着一个虚线框 disabled: true，说明包在、服务可以不在。核心反差：两张图看着像一张，其实不是。</desc>
+<title>图 18：同一批插件上的两张图</title>
+<desc>同一批插件上叠两张图。上面是安装关系图，边连向一个插件；下面是干活关系图，边连向一个岗位名。下图里那个岗位名旁还挂着一个虚线框，表示插件在、岗位可以空着。核心反差：两张图看着像一张，其实不是。</desc>
 <defs>
   <marker id="ar" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 Z" fill="#5F5E5A"/></marker>
   <marker id="arb" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 Z" fill="#1B3A6B"/></marker>

@@ -1,6 +1,6 @@
 <svg viewBox="0 0 680 402" width="100%" role="img" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif">
-<title>图 16：换掉循环，只有装配清单要动</title>
-<desc>上半是一个消费方，注入 shell，下面并排两个可互换的后端；换后端只改装配清单那一行。下半是装配清单指向 agent-loop，316 个包的依赖图里只有 3 条边指向 agent-loop，两条来自装配包。换后端与换循环，改动都落在装配清单这一格。</desc>
+<title>图 16：换掉循环，只有排班表要动</title>
+<desc>上半是一个消费方，报名要一个会拧螺丝的，下面并排两个可互换的后端；换后端只改排班表上的一行。下半是排班表指向领班的那一格。换后端与换循环，改动都落在排班表这一格。</desc>
 <defs>
   <marker id="ar" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 Z" fill="#5F5E5A"/></marker>
   <marker id="arb" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 Z" fill="#1B3A6B"/></marker>

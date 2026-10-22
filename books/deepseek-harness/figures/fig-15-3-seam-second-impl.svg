@@ -1,6 +1,6 @@
 <svg viewBox="0 0 680 268" width="100%" role="img" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif">
-<title>图 39：33 个 seam 里只有 15 个备好了第二个实现</title>
-<desc>一条横轴摆 33 格，每格一个 seam。绿色的 15 格已有两个以上平级实现；灰色的 18 格契约立好了，眼下只有一份实现。有替换位和有没有现成的第二个实现，是两笔账。</desc>
+<title>图 39：有替换位的，不一定都备好了第二个实现</title>
+<desc>一条横轴摆着一格格替换位。绿色那些已经有了两个以上平级实现；灰色的契约立好了，眼下只有一份实现。有替换位和有没有现成的第二个实现，是两笔账。</desc>
 <defs>
   <marker id="ar" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 Z" fill="#5F5E5A"/></marker>
   <marker id="arb" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 Z" fill="#1B3A6B"/></marker>

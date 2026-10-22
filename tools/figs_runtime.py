@@ -62,10 +62,9 @@ def fig_12_1(out_dir):
     return write(
         out_dir, "fig-12-1-turn-skeleton.svg", 382,
         "图 28：一个轮次的持久骨架与实时信号",
-        "一个轮次内两类事件并排对照。左列写进会话日志，是能回放的持久事实：turn/start、step/start、"
-        "system/message、user/message、assistant/message、tool/*、step/end、turn/end。右列只在进程里广播，"
-        "不落盘：agent/status、agent/assistant-stream、agent/inbox/*。"
-        "核心反差：能回放的都在左列，过路不落盘的一律在右列。",
+        "一个轮次里两类事情并排对照。左列写进总账，是能回放的持久事实：这趟开工、起一步、开场白落位、业主的话、师傅的答、"
+        "拧螺丝的结果、这一步收工、这趟交活。右列只在屋里广播，不落账：状态变化、答话在往外流、屋里各角落的传话。核心反差"
+        "：能回放的都在左列，过路不落账的一律在右列。",
         b,
     )
 
@@ -174,22 +173,20 @@ def fig_12_2(out_dir):
         b.append(txt(lx, y - 9, label, size=10.5, fill=INK, anchor="middle"))
 
     # 分支括号最后画，保证标签完整、不被消息遮罩切边
-    bracket(46, 305, 925, "alt  被拦 / 没活 / 起步前没过", 351, "else  放行")
-    bracket(58, 586, 850, "alt  这一答没成", 686, "else  师傅答成了")
-    bracket(70, 759, 848, "loop  收齐结果再往下，一批有上限")
-    bracket(58, 886, 925, "opt  师傅说完了，也没新话进门")
+    bracket(46, 305, 925, "二选一 · 被拦 / 没活 / 起步前没过", 351, "否则 · 放行")
+    bracket(58, 586, 850, "二选一 · 这一答没成", 686, "否则 · 师傅答成了")
+    bracket(70, 759, 848, "重复 · 收齐结果再往下，一批有上限")
+    bracket(58, 886, 925, "可选 · 师傅说完了，也没新话进门")
 
     b.extend(banner(40, 990, 608, "除了拧螺丝的交回的结果直接落笔记，其余每句话都经领班的转一手。"))
-    b.append(note(40, 1038, "灰实线＝派活，蓝虚线＝回话；左侧括号标分支（alt / loop / opt）", size=10.5))
-    b.append(note(40, 1058, "简化自 官方生命周期文档", size=10.5))
+    b.append(note(40, 1038, "灰实线＝派活，蓝虚线＝回话；左侧括号标分支：二选一、重复、可选", size=10.5))
     return write(
         out_dir, "fig-12-2-turn-sequence.svg", 1072,
-        "图 29：从 followup 到工具结果，一次轮次的完整时序",
-        "竖向时序图，七条生命线自左向右：用户/SDK、Session、Driver、hooks、ctx.systemPrompt、ctx.llm、"
-        "ctx.tools，时间自上而下。followup 进来后 Driver 开轮次（turn/start），组装提示词、跑 agent/pre-step；"
-        "被拒或首批为空则空轮次结束，接纳则开步骤（step/start），协调请求、llm/stream 流式返回，"
-        "模型成功后进工具循环（tool/call → 有序 pre、并发 execute → tool/result），最后 step/end、turn/end、"
-        "agent/status idle。左侧括号标出 alt / else / loop / opt 分支。",
+        "图 29：一次轮次的完整时序",
+        "竖向时序图，七条生命线自左向右：业主、记笔记的、领班的、公告栏、拼开场白的、师傅、拧螺丝的，时间自上而下。业主一"
+        "句话进门，领班开轮次、拼开场白、过公告栏；被拒或首批为空则空轮次结束，接纳则起一步，把问题递到师傅手里，师傅逐字"
+        "回话；这一答没成就原话重问或认下这次错；之后排活、过五道手、能同时干的同时动手，结果直接落笔记；收尾前再过一道手"
+        "，交活。左侧括号标出二选一、重复、可选分支。",
         b,
     )
 
@@ -198,48 +195,47 @@ def fig_12_2(out_dir):
 def fig_12_3(out_dir):
     b = []
     lanes = [
-        ("① startsRequestSeries —— 要不要开一串新请求", 34),
-        ("② retry —— 本次尝试失败后只重发，不重拼", 112),
+        ("① 要不要另起一串新请求", 34),
+        ("② 失败了只原话重问，不重拼", 112),
         ("③ 提示词准入 —— 走历史，不走请求体", 190),
     ]
     for title, y in lanes:
         b.append(rect(40, y, 560, 64, fill=PAPER, stroke=HAIR, rx=10))
         b.append(txt(56, y + 18, title, size=11.5, fill=INK, weight=600))
     # 泳道 1：turn/start → agent/pre-step → startsRequestSeries
-    for x, w, s in [(56, 80, "turn/start"), (154, 112, "agent/pre-step")]:
+    for x, w, s in [(56, 80, "这趟开工"), (154, 112, "起步前过一道手")]:
         b.extend(_chip(x, 66, w, s))
     b.append(line(138, 78, 152, 78, marker="ar"))
     b.append(line(268, 78, 282, 78, marker="ar"))
-    b.append(rect(284, 66, 140, 24, fill=TEAL, rx=12))
-    b.append(txt(354, 78, "startsRequestSeries", size=10.5, fill="#FFFFFF", anchor="middle", mono=True))
-    b.append(txt(436, 78, "enter 决策里带上这个布尔量", size=10.5, fill=GRAY))
+    b.append(rect(284, 66, 100, 24, fill=TEAL, rx=12))
+    b.append(txt(334, 78, "另起新请求", size=10.5, fill="#FFFFFF", anchor="middle"))
+    b.append(txt(436, 78, "把这个判断带进决策", size=10.5, fill=GRAY))
     # 泳道 2：step/start → agent/request-error → retry
-    for x, w, s in [(56, 80, "step/start"), (154, 140, "agent/request-error")]:
+    for x, w, s in [(56, 80, "起一步"), (154, 140, "这一步问错了")]:
         b.extend(_chip(x, 144, w, s))
     b.append(line(138, 156, 152, 156, marker="ar"))
     b.append(line(296, 156, 310, 156, marker="ar"))
-    b.append(rect(312, 144, 52, 24, fill=TEAL, rx=12))
-    b.append(txt(338, 156, "retry", size=10.5, fill="#FFFFFF", anchor="middle", mono=True))
-    b.append(txt(376, 156, "同一步骤内重发", size=10.5, fill=GRAY))
+    b.append(rect(312, 144, 70, 24, fill=TEAL, rx=12))
+    b.append(txt(347, 156, "原话重问", size=10.5, fill="#FFFFFF", anchor="middle"))
+    b.append(txt(376, 156, "同一步里原话重问", size=10.5, fill=GRAY))
     # 泳道 3：step/start → system/message
-    b.extend(_chip(56, 222, 80, "step/start"))
+    b.extend(_chip(56, 222, 80, "起一步"))
     b.append(line(138, 234, 152, 234, marker="ar"))
-    b.append(rect(154, 222, 108, 24, fill=TEAL, rx=12))
-    b.append(txt(208, 234, "system/message", size=10.5, fill="#FFFFFF", anchor="middle", mono=True))
-    b.append(txt(276, 234, "占 surface 第 0 号节点", size=10.5, fill=GRAY))
+    b.append(rect(154, 222, 100, 24, fill=TEAL, rx=12))
+    b.append(txt(204, 234, "开场白落位", size=10.5, fill="#FFFFFF", anchor="middle"))
+    b.append(txt(276, 234, "钉在开场白第一条", size=10.5, fill=GRAY))
     # 轮次边界（三个决策点都不与它相交）
     b.append(line(626, 22, 626, 258, stroke=BLUE, sw=1.6))
     b.append(circle(626, 22, 3, fill=BLUE))
     b.append(circle(626, 258, 3, fill=BLUE))
     b.append(vtxt(654, 140, "轮次边界", size=11, fill=BLUE))
     b.extend(banner(40, 268, 608, "三个决策点都卡在轮次内部，一个都不碰右侧那条轮次边界。"))
-    b.append(note(40, 320, "位置来源：官方架构文档的轮次流程一节", size=10.5))
     return write(
         out_dir, "fig-12-3-three-decisions.svg", 334,
         "图 30：三个决策点在时序里的位置",
-        "三条泳道各标一个决策点。startsRequestSeries 卡在 agent/pre-step 的返回里；retry 卡在 "
-        "agent/request-error；提示词准入发生在 step/start 之后，写成 system/message 事件。"
-        "右侧竖线是轮次边界，三个决策点都在它左边、都不与它相交——核心反差：三个决策点全在轮次内部。",
+        "三条泳道各标一个决策点。第一个卡在起步前那道手之后：要不要另起一串新请求；第二个卡在问错了之后：同一步里原话重问"
+        "，不重拼；第三个发生在起一步之后：开场白按历史拼，不按请求体拼。右侧竖线是轮次边界，三个决策点都在它左边、都不与"
+        "它相交——核心反差：三个决策点全在轮次内部。",
         b,
     )
 
@@ -277,14 +273,13 @@ def fig_13_1(out_dir):
     b.extend(banner(40, 220, 608,
                     "越靠前越能决定这颗拧不拧，越靠后越只能决定看到什么；",
                     "登记只记账，落账只定稿，章一落就冻结。", size2=11.5))
-    b.append(note(40, 286, "灰字为进，蓝字为出 · 简化自 官方工具流水线文档", size=10.5))
+    b.append(note(40, 286, "灰字为进，蓝字为出", size=10.5))
     return write(
         out_dir, "fig-13-1-five-stages.svg", 300,
         "图 31：一次工具调用要穿过的五段",
-        "一条横向链 pre → guards → execute → post → finalize。上方三条弧线标出三个 waterfall："
-        "tools/pre-execute、tools/execute、tools/post-execute；下方标出两个非 waterfall 的收紧点："
-        "guards 只能收紧、finalize 是定稿。每段下方是它的输入与输出，关键类型是 PreToolDecision、"
-        "工具函数体、ToolExecutionResult。核心反差：能改写这次调用的只有三个 waterfall。",
+        "一条横向链：登记、审查、放行、执行、落账。上方三条弧线标出三个能改主意的口子：动手前、动手中、动手后；下方标出两"
+        "个只收紧的口子：审查一道接一道只能更严，落账是定稿。每段下方是它的输入与输出。核心反差：能改写这次调用的只有那三"
+        "个口子。",
         b,
     )
 
@@ -324,13 +319,13 @@ def fig_13_2(out_dir):
     b.extend(_hand(54, 236, TEAL))
     b.append(txt(104, 252, "外头下活的——随时收回这颗，能喊停；换个闹钟也切不断收回", size=11, fill=INK))
     b.extend(banner(40, 288, 608, "叫停不是无声的：先记账，后动手；拦下的、拧砸的、收回的，都归成同一张回话。"))
-    b.append(note(40, 340, "链上只有递家伙的那只手喊不停 · 简化自 官方工具流水线文档", size=10.5))
+    b.append(note(40, 340, "链上只有递家伙的那只手喊不停", size=10.5))
     return write(
         out_dir, "fig-13-2-who-can-abort.svg", 354,
         "图 32：这条链上谁能喊停",
-        "沿五个阶段各标一只表示「能不能喊停」的手。pre 有 deny / cancel，guards 有 reason，两只手能停；"
-        "execute 的包装层是打叉的手，只能改 exec.signal，停不下来。链外还有两只手：审批在 pre 的 ask 处拒绝，"
-        "外部调用方随时取消。核心反差：整条链上唯一停不下来的，是真正干活的 execute 包装层。",
+        "沿五个阶段各标一只表示「能不能喊停」的手。登记能拒也能撤，审查能给出理由，两只手能停；执行那只手画着叉，只能打信"
+        "号催促，停不下来。链外还有两只手：审批在登记那一步拒绝，业主随时能撤。核心反差：整条链上唯一停不下来的，是真正干"
+        "活的执行。",
         b,
     )
 
@@ -360,11 +355,10 @@ def fig_13_3(out_dir):
     b.append(note(40, 296, "收回分两种：已经动了手的算拧过，还没派活的算没动手", size=10.5))
     return write(
         out_dir, "fig-13-3-trace-lands.svg", 310,
-        "图 33：中止和失败都汇到同一条 tool/result",
-        "左侧三条入口：拒绝 denied、异常 throw、取消 cancelled，各画一条线。三条线汇进右侧同一个工具结果框 "
-        "tool/result，框内逐条标出各自的错误码：拒绝带 reason、异常归一化成 isError、取消分 ABORTED 与 "
-        "ABORTED_BEFORE_DISPATCH、不存在的工具是 UNKNOWN_TOOL。核心反差：三条看着不同的路，出口只有一个，"
-        "共同点是调用失败但不终止当前轮次。",
+        "图 33：中止和失败都汇到同一笔账",
+        "左侧三条入口：拒了、炸了、撤了，各画一条线。三条线汇进右侧同一笔结果账，账上逐条标出各自的结局：拒的带理由、炸的"
+        "归一成出错、撤的分动手前与动手后、没这号工具单记一笔。核心反差：三条看着不同的路，出口只有一个，共同点是这次调用"
+        "失败，但这一趟还没完。",
         b,
     )
 
@@ -388,13 +382,12 @@ def fig_14_1(out_dir):
     b.append(txt(320, 208, "它是抄件，不是第二本账", size=10.5, fill=GRAY))
     b.extend(banner(40, 246, 608, "只有一支笔写真账：事情记进总账；撕掉抄件，不丢任何东西。"))
     b.append(note(40, 296, "口径：总账只往后添、从不涂改，是唯一真源。", size=10.5))
-    b.append(note(40, 314, "抄件由总账誊抄而来，从不单独记账 · 简化自 官方会话子系统说明", size=10.5))
+    b.append(note(40, 314, "抄件由总账誊抄而来，从不单独记账", size=10.5))
     return write(
         out_dir, "fig-14-1-log-is-truth.svg", 330,
         "图 34：日志是唯一真源，消息历史是它的投影",
-        "左侧一个窄的 SessionEvent 日志竖条，旁标「只写不改」；一支箭头由它指向右侧派生的「消息历史」框，"
-        "框旁标「可删可重算」。核心反差：日志是唯一真源，消息历史只是它的投影——"
-        "删掉这个视图不丢任何东西，回放就是从同一组事件重新派生。",
+        "左侧一条窄窄的总账竖条，旁标「只写不改」；一支箭头由它指向右侧派生的「消息历史」框，框旁标「可删可重算」。核心反"
+        "差：总账是唯一真源，消息历史只是它的投影——删掉这个视图不丢任何东西，回放就是从同一组底稿重新派生。",
         b,
     )
 
@@ -425,9 +418,9 @@ def fig_14_2(out_dir):
     return write(
         out_dir, "fig-14-2-derivation-cost.svg", 354,
         "图 35：派生的代价与两层缓存",
-        "中间一条「事件流」横线。上方挂 deriveMessages() 的 surface 缓存，管「这一步会话看到什么」；"
-        "下方挂 ctx.sessionProjections 的单元缓存，管「某个域现在是什么值」。两条缓存都用虚线回指事件流，"
-        "表示都由事件驱动。核心反差：派生的代价靠两层缓存压住，但两层都不落成第二份真源，删掉重算都对。",
+        "中间一条「事件流」横线。上方挂一层缓存，管「这一步屋里的人看到什么」；下方挂一层缓存，管「某个角落现在是什么值」"
+        "。两条缓存都用虚线回指事件流，表示都由底稿驱动。核心反差：派生的代价靠两层缓存压住，但两层都不落成第二份真源，删"
+        "掉重算都对。",
         b,
     )
 

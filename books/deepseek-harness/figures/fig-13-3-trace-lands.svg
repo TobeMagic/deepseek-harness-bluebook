@@ -1,6 +1,6 @@
 <svg viewBox="0 0 680 310" width="100%" role="img" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif">
-<title>图 33：中止和失败都汇到同一条 tool/result</title>
-<desc>左侧三条入口：拒绝 denied、异常 throw、取消 cancelled，各画一条线。三条线汇进右侧同一个工具结果框 tool/result，框内逐条标出各自的错误码：拒绝带 reason、异常归一化成 isError、取消分 ABORTED 与 ABORTED_BEFORE_DISPATCH、不存在的工具是 UNKNOWN_TOOL。核心反差：三条看着不同的路，出口只有一个，共同点是调用失败但不终止当前轮次。</desc>
+<title>图 33：中止和失败都汇到同一笔账</title>
+<desc>左侧三条入口：拒了、炸了、撤了，各画一条线。三条线汇进右侧同一笔结果账，账上逐条标出各自的结局：拒的带理由、炸的归一成出错、撤的分动手前与动手后、没这号工具单记一笔。核心反差：三条看着不同的路，出口只有一个，共同点是这次调用失败，但这一趟还没完。</desc>
 <defs>
   <marker id="ar" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 Z" fill="#5F5E5A"/></marker>
   <marker id="arb" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 Z" fill="#1B3A6B"/></marker>

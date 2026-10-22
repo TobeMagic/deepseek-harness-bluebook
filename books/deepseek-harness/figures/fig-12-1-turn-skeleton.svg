@@ -1,6 +1,6 @@
 <svg viewBox="0 0 680 382" width="100%" role="img" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif">
 <title>图 28：一个轮次的持久骨架与实时信号</title>
-<desc>一个轮次内两类事件并排对照。左列写进会话日志，是能回放的持久事实：turn/start、step/start、system/message、user/message、assistant/message、tool/*、step/end、turn/end。右列只在进程里广播，不落盘：agent/status、agent/assistant-stream、agent/inbox/*。核心反差：能回放的都在左列，过路不落盘的一律在右列。</desc>
+<desc>一个轮次里两类事情并排对照。左列写进总账，是能回放的持久事实：这趟开工、起一步、开场白落位、业主的话、师傅的答、拧螺丝的结果、这一步收工、这趟交活。右列只在屋里广播，不落账：状态变化、答话在往外流、屋里各角落的传话。核心反差：能回放的都在左列，过路不落账的一律在右列。</desc>
 <defs>
   <marker id="ar" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 Z" fill="#5F5E5A"/></marker>
   <marker id="arb" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 Z" fill="#1B3A6B"/></marker>

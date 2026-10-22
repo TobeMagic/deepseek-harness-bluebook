@@ -1,6 +1,6 @@
 <svg viewBox="0 0 680 412" width="100%" role="img" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif">
-<title>图 27：共享核心比最重的模式层还薄</title>
-<desc>分组柱状对比 base 94 条与各模式层条目数：web-app 112、sdk-minimal 32、sdk-app 7、headless 5、acp-app 5。base 用强调色标出，并有一条虚线标出 base 的高度。共享核心比最重的模式层还薄。</desc>
+<title>图 27：共享底座比最重的形态层还薄</title>
+<desc>分组柱状对比共享底座与各形态层的厚薄：有的形态加一大层，有的只加几条。底座用强调色标出，并有一条虚线标出底座的高度。共享底座比最重的形态层还薄——多数形态只是底座加一小片自己的东西。</desc>
 <defs>
   <marker id="ar" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 Z" fill="#5F5E5A"/></marker>
   <marker id="arb" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 Z" fill="#1B3A6B"/></marker>

@@ -1,6 +1,6 @@
 <svg viewBox="0 0 680 300" width="100%" role="img" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif">
 <title>图 31：一次工具调用要穿过的五段</title>
-<desc>一条横向链 pre → guards → execute → post → finalize。上方三条弧线标出三个 waterfall：tools/pre-execute、tools/execute、tools/post-execute；下方标出两个非 waterfall 的收紧点：guards 只能收紧、finalize 是定稿。每段下方是它的输入与输出，关键类型是 PreToolDecision、工具函数体、ToolExecutionResult。核心反差：能改写这次调用的只有三个 waterfall。</desc>
+<desc>一条横向链：登记、审查、放行、执行、落账。上方三条弧线标出三个能改主意的口子：动手前、动手中、动手后；下方标出两个只收紧的口子：审查一道接一道只能更严，落账是定稿。每段下方是它的输入与输出。核心反差：能改写这次调用的只有那三个口子。</desc>
 <defs>
   <marker id="ar" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 Z" fill="#5F5E5A"/></marker>
   <marker id="arb" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L9,5 L0,9 Z" fill="#1B3A6B"/></marker>
@@ -50,5 +50,5 @@
 <rect x="40" y="220" width="608" height="44" rx="6" fill="#F5F0E8" stroke="#D8D6CD" stroke-width="1.0"/>
 <text x="58" y="232.0" font-size="11.5" font-weight="400" fill="#2C2C2A" text-anchor="start" dominant-baseline="central">越靠前越能决定这颗拧不拧，越靠后越只能决定看到什么；</text>
 <text x="58" y="252.0" font-size="11.5" font-weight="400" fill="#0F6E56" text-anchor="start" dominant-baseline="central">登记只记账，落账只定稿，章一落就冻结。</text>
-<text x="40" y="286" font-size="10.5" font-weight="400" fill="#5F5E5A" text-anchor="start" dominant-baseline="central">灰字为进，蓝字为出 · 简化自 官方工具流水线文档</text>
+<text x="40" y="286" font-size="10.5" font-weight="400" fill="#5F5E5A" text-anchor="start" dominant-baseline="central">灰字为进，蓝字为出</text>
 </svg>

@@ -14,3 +14,6 @@ books/*/fragments-v2/
 
 # 片段预览 HTML（成书以外的工作文件）
 books/*/fragments/*.html
+
+# 发布用暂存目录（线上分享链接的上传感量）
+.publish/

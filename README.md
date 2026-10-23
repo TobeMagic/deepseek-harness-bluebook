@@ -17,6 +17,8 @@
 
 ## 📖 阅读与下载
 
+**在线读（GitHub Pages，免下载）**：<https://tobemagic.github.io/deepseek-harness-bluebook/>
+
 | 格式 | 文件 | 说明 |
 |------|------|------|
 | **HTML（单文件，推荐）** | [deepseek-harness-bluebook.html](books/deepseek-harness/deepseek-harness-bluebook.html) | 封面 + 6 部题图 + 目录 + 全部章节，42 张图全内联，双击即看，离线可用 |

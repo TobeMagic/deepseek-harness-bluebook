@@ -7,8 +7,9 @@
 但 `gh auth token` 与 HTTPS API 正常。这个脚本走 HTTP 提交，
 可以做单个 commit，也支持二进制文件（PDF / EPUB / 图片）。
 
-用法（路径相对仓库根，前面加 ! 表示删除）：
+用法（路径相对仓库根，前面加 ! 表示删除；local:remote 可指定远程路径）：
     python tools/gh_sync.py README.md tools/foo.py !old.md -m "提交说明"
+    python tools/gh_sync.py books/x/book.html:index.html --branch gh-pages -m "发布"
 
 选项：
     --repo  owner/name   默认读 git remote
@@ -81,6 +82,10 @@ def main() -> None:
 
     entries = []
     for p in args.paths:
+        # local:remote 冒号映射，远程路径可与本地不同（用于 Pages 入口 index.html）
+        remote = p
+        if not p.startswith("!") and p.count(":") == 1 and p[1] != ":":
+            p, remote = p.split(":", 1)
         if p.startswith("!"):
             entries.append({"path": p[1:], "mode": "100644", "type": "blob", "sha": None})
             print("  D", p[1:])
@@ -92,9 +97,9 @@ def main() -> None:
         blob = api("POST", f"{base}/blobs",
                    {"content": base64.b64encode(raw).decode("ascii"),
                     "encoding": "base64"}, tok=tok)
-        entries.append({"path": p.replace("\\", "/"), "mode": "100644",
+        entries.append({"path": remote.replace("\\", "/"), "mode": "100644",
                         "type": "blob", "sha": blob["sha"]})
-        print(f"  A {p}  ({len(raw)//1024} KB)")
+        print(f"  A {p} -> {remote}  ({len(raw)//1024} KB)")
 
     tree = api("POST", f"{base}/trees", {"base_tree": tree_sha, "tree": entries}, tok=tok)
     commit = api("POST", f"{base}/commits",

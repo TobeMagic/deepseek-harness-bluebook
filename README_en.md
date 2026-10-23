@@ -19,6 +19,8 @@ DeepSeek Harness is taken apart and rebuilt in plain language, using one running
 
 ## 📖 Read & Download
 
+**Read online (GitHub Pages, no download)**: <https://tobemagic.github.io/deepseek-harness-bluebook/>
+
 | Format | File | Notes |
 |------|------|------|
 | **HTML (single file, recommended)** | [deepseek-harness-bluebook.html](books/deepseek-harness/deepseek-harness-bluebook.html) | Cover, 6 part frontispieces, TOC, all chapters; 42 diagrams inlined; works offline |

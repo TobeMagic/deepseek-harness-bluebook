@@ -11,9 +11,9 @@
 | 阮一峰周刊自荐 issue | ✅ 已发 #12791，open 等筛选（417 期未收录） | https://github.com/ruanyf/weekly/issues/12791 |
 | skill PR（agentic-awesome-skills ★48.5k） | ✅ **已合并**（10-27 merged，skill 进 2750+ 目录主线） | https://github.com/sickn33/agentic-awesome-skills/pull/2142 ｜ [主线文件](https://github.com/sickn33/agentic-awesome-skills/blob/main/skills/bluebook-writing/SKILL.md) |
 | ComposioHQ/awesome-claude-skills | ❌ PR 入口确认关闭（10-26 与 10-31 两次 REST 均 404），放弃 | — |
-| Show HN | ⬜ 待择时（周二至周四 7–10am PT） | — |
-| X 线程 | ⬜ 待发（见下方文案） | — |
-| 知乎/V2EX 长文 | ⬜ 待写 | — |
+| 知乎/V2EX 长文 | ✅ 已写好待发（`articles/` 下两篇） | zhihu-kernel-is-empty.md / v2ex-kernel-is-empty.md |
+| Show HN | 📋 执行卡就绪（含时间换算/操作/守评论区），待 11-03（周二）22:00 北京发 | `articles/SHOW-HN-CARD.md` |
+| X 线程 | ⬜ 待作者号发（周二三 15:00–18:00 UTC，文案见下方） | — |
 
 ---
 
